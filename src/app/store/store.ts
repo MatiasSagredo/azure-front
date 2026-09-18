@@ -6,15 +6,25 @@ import { NgForOf } from '../../../node_modules/@angular/common/types/_common_mod
   templateUrl: './store.html',
 })
 export class Store {
-    public test:string[] = [
-        "risk of rain 2",
-        "devil survivor 2",
-        "half life blueshift",
-        "rabbit hole",
-        "Etrian odyssey 3 HD",
-        "Terraria",
-        "Minecraft"
+    public readonly test = signal<any[]>([])
     
-    ];
+    //any[] = [];
+
+    constructor(){    
+        const Init = async ()=>{
+            const response = fetch("http://localhost:3000/v1/catalogo").then(
+                async(value:Response)=>{
+                    const data :any[]= await value.json()
+                    this.test.set(data)
+                    console.log(data[0])
+                }
+            )
+        }
+
+        Init()
+    }
+
+
+
 }
 
