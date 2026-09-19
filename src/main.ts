@@ -7,12 +7,12 @@ import { App } from './app/app';
  Amplify.configure({
    Auth: {
      Cognito: {
-       userPoolId:       'us-east-1_CYMenWV1s',
+       userPoolId:       'east-1_CYMenWV1s',
        userPoolClientId: '1an4s0e22ro818pr8beec2oei0',
        loginWith: {
          oauth: {
            domain:          'us-east-1cymenwv1s.auth.us-east-1.amazoncognito.com',
-           scopes:          ['openid', 'profile', 'vidalstore/catalogo.leer'],
+           scopes:          ['openid', 'email'],
            redirectSignIn:  ['http://localhost:4200/callback'],
            redirectSignOut: ['http://localhost:4200'],
            responseType:    'code',

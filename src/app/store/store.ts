@@ -7,8 +7,6 @@ import { NgForOf } from '../../../node_modules/@angular/common/types/_common_mod
 })
 export class Store {
     public readonly test = signal<any[]>([])
-    
-    //any[] = [];
 
     constructor(){    
         const Init = async ()=>{
