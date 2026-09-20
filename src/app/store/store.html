@@ -4,7 +4,7 @@
     
     
     <div style="display: grid;grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
-        @for (item of test(); track $index) {
+        @for (item of gameList(); track $index) {
             <div>
                 <img width="350" height="250" [src]=item.background_image/>
                 <h2 style="margin: 0;">{{item.name}}</h2>

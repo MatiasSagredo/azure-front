@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
  */
 export const GATEWAY = 'http://localhost:8080';
 
-export type Juego = {
+export type Game = {
   id: number;
   slug: string;
   name: string;
@@ -30,15 +30,15 @@ export type Juego = {
  * que cambie algo.
  */
 @Injectable({ providedIn: 'root' })
-export class Biblioteca {
+export class Api {
   private readonly http = inject(HttpClient);
-  /*
-  libros(): Observable<Libro[]> {
-    return this.http.get<Libro[]>(`${GATEWAY}/v1/libros`);
+  games(): Observable<Game[]> {
+      return this.http.get<Game[]>(`${GATEWAY}/v1/catalogo`);
+    }
+    
+  library():Observable<Game[]>{
+    return this.http.get<Game[]>(`${GATEWAY}/v1/catalogo/libreria`);
   }
 
-  prestamos(): Observable<Prestamo[]> {
-    return this.http.get<Prestamo[]>(`${GATEWAY}/v1/prestamos`);
-  }*/
 
 }
