@@ -48,9 +48,12 @@ export class Api {
     return this.http.get<object[]>(`${GATEWAY}/v1/licencias/`);
   }
   
-
   buy(id:number){        
     return this.http.post(`${GATEWAY}/v1/licencias/comprar/${id}`,{});
+  }
+
+  revokeGame(id:number){        
+    return this.http.delete(`${GATEWAY}/v1/licencias/${id}`);
   }
 
 
