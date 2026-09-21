@@ -10,6 +10,17 @@
         <a href="/library" class="button">
           <button>Biblioteca</button>
         </a>  
+        @if (sessionType() > 1 ){
+          <a href="/library" class="button">
+            <button>admin licensia</button>
+          </a>  
+          <a href="/auditing" class="button">
+            <button>Auditoria</button>
+          </a>  
+
+
+        }
+      
       }
     
   
@@ -18,6 +29,7 @@
         <button (click)="logout()">Cerrar Sesion</button>
       }
       @else{<button (click)="login()">Iniciar Sesion</button>}
+
 
 
     </div>
