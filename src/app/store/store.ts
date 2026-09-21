@@ -30,6 +30,11 @@ export class Store {
     }
     protected async comprar(juegoID:number){
         console.log(juegoID)
+        this.api.buy(juegoID).subscribe(
+            {next:()=>{
+                console.log("why?")
+            }}
+        )
     }
 
 
