@@ -1,0 +1,55 @@
+header {
+  background-color: var(--header-background-color);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s ease;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: var(--dark-header-background-color);
+  }
+}
+
+header h1 {
+  color: var(--logo-color);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+header button.header-btn {
+  background: none;
+  border: none;
+  color: oklab(96.416% 0 -0.00011);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+header button.header-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  /* línea completa */
+  height: 2px;
+  background: oklab(90.365% 0 -0.0001);
+  transform: scaleX(0);
+  /* empieza invisible */
+  transform-origin: center;
+  /* clave: desde el centro */
+  transition: transform 0.3s ease;
+}
+
+header button.header-btn:hover {
+  color: #fff;
+}
+
+header button.header-btn:hover::after {
+  transform: scaleX(1);
+}
