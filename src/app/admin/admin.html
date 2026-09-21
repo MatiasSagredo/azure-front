@@ -3,11 +3,11 @@
     <h2>Licensias ({{licenseList().length}})</h2>
     
     
-    <div style="display: grid;grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
+    <div style="display: flex;flex-direction: column;gap: 2rem;">
         @for (item of licenseList(); track $index) {
-            <div>
-                <h2 style="margin: 0;">Juego {{item.gid}} Eliminado Por {{item.uid}}</h2>
-                <button>Eliminar Licensia? (malevolo)</button>
+            <div style="display: flex;gap: 1rem;">
+                <h2 style="margin: 0;">Juego {{item.gid}} De {{item.uid}}</h2>
+                <button (click)="revoke(item.id)">Eliminar Licensia? (malevolo)</button>
             </div>
         }
     </div>
