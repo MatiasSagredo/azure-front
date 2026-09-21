@@ -17,7 +17,7 @@ export class Auditing {
         this.api.licenseAudit().subscribe({
             next: (audits) => {
                 // avoid issues on empty object
-
+                if (audits.length == undefined)audits = []
                 this.auditList.set(audits);
                 this.code.set(200);
             },
