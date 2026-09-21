@@ -6,7 +6,7 @@
       <button>Tienda</button>
     </a>
     
-    @if (LoginState() != LoginStates.LoginNone ){
+    @if (sessionType() != 0 ){
         <a href="/library" class="button">
           <button>Biblioteca</button>
         </a>  
@@ -14,7 +14,7 @@
     
   
     <div style="width: 100%;display: flex;justify-content: end;gap: .5rem;">
-      @if (LoginState() != LoginStates.LoginNone ){
+      @if (sessionType() != 0 ){
         <button (click)="logout()">Cerrar Sesion</button>
       }
       @else{<button (click)="login()">Iniciar Sesion</button>}

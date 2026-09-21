@@ -2,13 +2,9 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { signInWithRedirect,fetchAuthSession,signOut } from 'aws-amplify/auth';
 import { Hub, } from 'aws-amplify/utils';
+import { LoginStates, sessionType } from './auth/session.guard';
 
-export enum LoginStates{
-  LoginNone,
-  LoginUser,
-  LoginEditor,
-  LoginAdmin
-}
+
 
 @Component({
   imports: [RouterOutlet],
@@ -17,10 +13,8 @@ export enum LoginStates{
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly LoginStates = LoginStates
-
   protected readonly title = signal('VidalStoreFront');
-  protected readonly LoginState = signal(LoginStates.LoginNone)
+  protected readonly sessionType = sessionType;
   
   constructor(){
     this.checkGroups()
@@ -40,15 +34,16 @@ export class App {
   protected async checkGroups(){
       const { tokens } = await fetchAuthSession();
       const groups = (tokens?.accessToken?.payload['cognito:groups'] ?? []) as string[];
-      if (groups.includes('jugadores'))this.LoginState.set(LoginStates.LoginUser)
-      if (groups.includes('editores'))this.LoginState.set(LoginStates.LoginEditor)
-      if (groups.includes('administradores'))this.LoginState.set(LoginStates.LoginAdmin)
+      if (groups.includes('jugadores'))sessionType.set(LoginStates.LoginUser)
+      if (groups.includes('editores'))sessionType.set(LoginStates.LoginEditor)
+      if (groups.includes('administradores'))sessionType.set(LoginStates.LoginAdmin)
       console.log(groups)
   }
 
   protected async logout(){
     await signOut()
-    this.LoginState.set(LoginStates.LoginNone)
+    
+    sessionType.set(LoginStates.LoginNone)
   }
 
 }

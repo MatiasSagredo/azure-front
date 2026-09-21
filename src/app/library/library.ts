@@ -16,6 +16,9 @@ export class Library {
     constructor(){    
         this.api.library().subscribe({
             next: (games) => {
+                // avoid erroring out
+                if (typeof(games) == "object")games = [] 
+
                 this.gameList.set(games);
                 this.code.set(200);
             },
