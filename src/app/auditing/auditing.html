@@ -3,10 +3,10 @@
     <h2>Juegos Eliminados ({{auditList().length}})</h2>
     
     
-    <div style="display: grid;grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
+    <div style="display: flex;flex-direction: column; gap: 2rem;">
         @for (item of auditList(); track $index) {
             <div>
-                <h2 style="margin: 0;">Juego {{item.gid}} Eliminado Por {{item.uid}}</h2>
+                <h2 style="margin: 0;">Juego {{(item.licenseinfo??{}).gid ?? 0}} Eliminado Por {{item.deleter}}</h2>
             </div>
         }
     </div>
