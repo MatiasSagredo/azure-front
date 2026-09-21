@@ -18,6 +18,7 @@ export class Store {
     constructor(){    
         this.api.games().subscribe({
             next: (games) => {
+                if (games.length == undefined) games = []
                 this.gameList.set(games);
                 this.code.set(200);
             },
