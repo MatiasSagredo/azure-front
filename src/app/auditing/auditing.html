@@ -1,0 +1,15 @@
+<div style="padding-left: 1rem;padding-right: 2rem;">
+
+    <h2>Juegos Eliminados ({{auditList().length}})</h2>
+    
+    
+    <div style="display: grid;grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));">
+        @for (item of auditList(); track $index) {
+            <div>
+                <h2 style="margin: 0;">Juego {{item.gid}} Eliminado Por {{item.uid}}</h2>
+            </div>
+        }
+    </div>
+    
+    
+</div>
