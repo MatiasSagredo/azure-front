@@ -11,4 +11,5 @@ export class Callback {
   protected readonly conCodigo = signal(
     new URLSearchParams(window.location.search).has('code'),
   );
+
 }

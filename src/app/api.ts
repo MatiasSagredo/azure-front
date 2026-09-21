@@ -37,7 +37,7 @@ export class Api {
     }
     
   library():Observable<Game[]>{
-    return this.http.get<Game[]>(`${GATEWAY}/v1/catalogo/libreria`);
+    return this.http.get<Game[]>(`${GATEWAY}/v1/catalogo/biblioteca`);
   }
 
 
