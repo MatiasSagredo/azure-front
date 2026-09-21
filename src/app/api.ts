@@ -43,6 +43,10 @@ export class Api {
   licenseAudit():Observable<object[]>{
     return this.http.get<object[]>(`${GATEWAY}/v1/licencias/eliminados`);
   }
+
+  licenses():Observable<object[]>{
+    return this.http.get<object[]>(`${GATEWAY}/v1/licencias/`);
+  }
   
 
   buy(id:number){    
