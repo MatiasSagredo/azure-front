@@ -49,9 +49,7 @@ export class Api {
   }
   
 
-  buy(id:number){    
-    console.log("???",id)
-    
+  buy(id:number){        
     return this.http.post(`${GATEWAY}/v1/licencias/comprar/${id}`,{});
   }
 
