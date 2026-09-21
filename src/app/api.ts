@@ -40,5 +40,16 @@ export class Api {
     return this.http.get<Game[]>(`${GATEWAY}/v1/catalogo/biblioteca`);
   }
 
+  licenseAudit():Observable<object[]>{
+    return this.http.get<object[]>(`${GATEWAY}/v1/licencias/eliminados`);
+  }
+  
+
+  buy(id:number){    
+    console.log("???",id)
+    
+    return this.http.post(`${GATEWAY}/v1/licencias/comprar/${id}`,{});
+  }
+
 
 }
