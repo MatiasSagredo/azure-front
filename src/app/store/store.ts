@@ -1,5 +1,4 @@
 import { Component, inject, signal } from '@angular/core';
-import { NgForOf } from '../../../node_modules/@angular/common/types/_common_module-chunk';
 import { Api } from '../api';
 import { HttpErrorResponse } from '@angular/common/http';
 import { sessionType } from '../auth/session.guard';
@@ -31,9 +30,7 @@ export class Store {
     protected async comprar(juegoID:number){
         console.log(juegoID)
         this.api.buy(juegoID).subscribe(
-            {next:()=>{
-                console.log("why?")
-            }}
+            {next:()=>{}}
         )
     }
 
