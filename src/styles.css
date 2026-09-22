@@ -1,24 +1,37 @@
 :root {
-  --background-color: oklch(93.705% 0.00011 271.152);
-  --dark-background-color: oklch(19.402% 0.01622 279.196);
-  --color: oklch(30.519% 0.00003 271.152);
-  --dark-color: oklch(79.603% 0.0011 12.655);
-  --logo-color: oklch(100% 0.00011 271.152);
-  --header-background-color: oklch(69.211% 0.09341 254.056);
-  --dark-header-background-color: oklch(25.692% 0.02447 281.088);
+  --background-color: #f4f6fb;
+  --color: #202534;
+  --surface-color: #ffffff;
+  --surface-border-color: #d9dfeb;
+  --shadow-color: rgba(41, 52, 79, 0.14);
+  --header-background-color: #ffffff;
+  --logo-color: #202534;
+  --nav-color: #536078;
 }
 
 html {
   background-color: var(--background-color);
   color: var(--color);
+  min-height: 100%;
+}
 
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--dark-background-color);
-    color: var(--dark-color);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #13141c;
+    --color: #d9deeb;
+    --surface-color: #1d1f2a;
+    --surface-border-color: #303445;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --header-background-color: #202230;
+    --logo-color: #f4f6fb;
+    --nav-color: #aeb7c4;
   }
 }
 
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--color);
 }

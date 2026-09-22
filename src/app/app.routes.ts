@@ -5,10 +5,10 @@ import { Callback } from './callback/callback';
 import { sesionGuard } from './auth/session.guard';
 
 export const routes: Routes = [
-  { path: '', component:Store },
-  { path: 'search', component:Store },
-  { path: 'callback', component:Callback,redirectTo:"/"},
+  { path: '', component: Store },
+  { path: 'search', component: Store },
+  { path: 'callback', component: Callback, redirectTo: "/" },
 
-  { path: 'library', component:Library, canActivate:[sesionGuard] },
+  { path: 'library', component: Library, canActivate: [sesionGuard] },
 
 ];
