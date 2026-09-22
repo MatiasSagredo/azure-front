@@ -1,21 +1,20 @@
 <header>
-  <div style="display: flex;align-items:center;gap: 1rem;">  
-  
+  <div style="display: flex;align-items:center;gap: 1rem;">
+
     <h1>VidalStore</h1>
     <a href="/" class="button">
-      <button>Tienda</button>
+      <button class="header-btn">Tienda</button>
     </a>
-    
+
     @if (LoginState() != LoginStates.LoginNone ){
-        <a href="/library" class="button">
-          <button>Biblioteca</button>
-        </a>  
-      }
-    
-  
+    <a href="/library" class="button">
+      <button class="header-btn">Biblioteca</button>
+    </a>
+    }
+
     <div style="width: 100%;display: flex;justify-content: end;gap: .5rem;">
       @if (LoginState() != LoginStates.LoginNone ){
-        <button (click)="logout()">Cerrar Sesion</button>
+      <button (click)="logout()">Cerrar Sesion</button>
       }
       @else{<button (click)="login()">Iniciar Sesion</button>}
 

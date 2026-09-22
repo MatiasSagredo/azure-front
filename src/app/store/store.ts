@@ -6,27 +6,24 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'store',
   templateUrl: './store.html',
+  styleUrl: './store.css',
 })
 export class Store {
-    public readonly gameList = signal<any[]>([])
-    private readonly api = inject(Api);
-    protected readonly code = signal<number | null>(null);
+  public readonly gameList = signal<any[]>([])
+  private readonly api = inject(Api);
+  protected readonly code = signal<number | null>(null);
 
 
-    constructor(){    
-        this.api.games().subscribe({
-            next: (games) => {
-                this.gameList.set(games);
-                this.code.set(200);
-            },
-            error: (e: HttpErrorResponse) => {
-                this.code.set(e.status);
-            },
-        });
+  constructor() {
+    this.api.games().subscribe({
+      next: (games) => {
+        this.gameList.set(games);
+        this.code.set(200);
+      },
+      error: (e: HttpErrorResponse) => {
+        this.code.set(e.status);
+      },
+    });
 
-    }
-
-
-
+  }
 }
-
