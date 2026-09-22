@@ -13,6 +13,8 @@ import { LoginStates, sessionType } from './auth/session.guard';
   templateUrl: './app.html',
 })
 export class App {
+  protected readonly LoginStates = LoginStates
+
   protected readonly title = signal('VidalStoreFront');
   protected readonly sessionType = sessionType;
   
