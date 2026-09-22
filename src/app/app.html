@@ -2,15 +2,23 @@
   <div style="display: flex;align-items:center;gap: 1rem;">  
   
     <h1>VidalStore</h1>
-    <button>Tienda</button>
-    <button>Biblioteca</button>
-
+    <a href="/" class="button">
+      <button>Tienda</button>
+    </a>
+    
+    @if (LoginState() != LoginStates.LoginNone ){
+        <a href="/library" class="button">
+          <button>Biblioteca</button>
+        </a>  
+      }
+    
   
     <div style="width: 100%;display: flex;justify-content: end;gap: .5rem;">
-      <button>Iniciar Sesion</button>
-      <button>Registrarse</button>
+      @if (LoginState() != LoginStates.LoginNone ){
+        <button (click)="logout()">Cerrar Sesion</button>
+      }
+      @else{<button (click)="login()">Iniciar Sesion</button>}
 
-      <button>Cerrar Sesion</button>
 
     </div>
   </div>
