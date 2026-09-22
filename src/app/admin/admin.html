@@ -1,0 +1,16 @@
+<div style="padding-left: 1rem;padding-right: 2rem;">
+
+    <h2>Licensias ({{licenseList().length}})</h2>
+    
+    
+    <div style="display: flex;flex-direction: column;gap: 2rem;">
+        @for (item of licenseList(); track $index) {
+            <div style="display: flex;gap: 1rem;">
+                <h2 style="margin: 0;">Juego {{item.gid}} De {{item.uid}}</h2>
+                <button (click)="revoke(item.id)">Eliminar Licensia? (malevolo)</button>
+            </div>
+        }
+    </div>
+    
+    
+</div>
