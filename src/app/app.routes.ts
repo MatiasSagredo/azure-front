@@ -7,13 +7,13 @@ import { Auditing } from './auditing/auditing';
 import { Admin } from './admin/admin';
 
 export const routes: Routes = [
-  { path: '', component:Store },
-  { path: 'search', component:Store },
-  { path: 'callback', component:Callback},
+  { path: '', component: Store },
+  { path: 'search', component: Store },
+  { path: 'callback', component: Callback },
 
-  { path: 'library', component:Library, canActivate:[sesionGuard] },
-  { path: 'auditing', component:Auditing, canActivate:[sesionGuard] },
-  { path: 'admin', component:Admin, canActivate:[sesionGuard] },
-  
+  { path: 'library', component: Library, canActivate: [sesionGuard] },
+  { path: 'auditing', component: Auditing, canActivate: [sesionGuard] },
+  { path: 'admin', component: Admin, canActivate: [sesionGuard] },
+
 
 ];

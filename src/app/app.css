@@ -1,0 +1,96 @@
+header {
+  background-color: var(--header-background-color);
+  padding: 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px var(--shadow-color);
+  transition: background-color 0.5s ease;
+}
+
+header h1 {
+  color: var(--logo-color);
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.header-content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.session-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.session-actions button {
+  border: 1px solid #ffd166;
+  border-radius: 4px;
+  background-color: #ffd166;
+  color: #171923;
+  padding: 0.45rem 0.85rem;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.session-actions button:hover {
+  background-color: #fff1bd;
+  transform: translateY(-1px);
+}
+
+.session-actions button:focus-visible {
+  outline: 2px solid #fff1bd;
+  outline-offset: 2px;
+}
+
+header .header-btn {
+  background: none;
+  border: none;
+  color: var(--nav-color);
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+header .header-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: oklab(90.365% 0 -0.0001);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+header .header-btn:hover::after,
+header .header-btn.active::after {
+  transform: scaleX(1);
+}
+
+header .header-btn.active {
+  color: #ffd166;
+
+  &::after {
+    background: #ffd166;
+  }
+}

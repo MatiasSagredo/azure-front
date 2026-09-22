@@ -1,38 +1,38 @@
 <header>
-  <div style="display: flex;align-items:center;gap: 1rem;">  
-  
+  <div class="header-content">
+
     <h1>VidalStore</h1>
-    <a href="/" class="button">
-      <button>Tienda</button>
-    </a>
-    
-    @if (sessionType() != 0 ){
-        <a href="/library" class="button">
-          <button>Biblioteca</button>
-        </a>  
-        @if (sessionType() > 1 ){
-          <a href="/admin" class="button">
-            <button>admin licensia</button>
-          </a>  
-          <a href="/auditing" class="button">
-            <button>Auditoria</button>
-          </a>  
+    <nav class="main-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+        ariaCurrentWhenActive="page" class="header-btn">
+        Tienda
+      </a>
 
-
-        }
-      
-      }
-    
-  
-    <div style="width: 100%;display: flex;justify-content: end;gap: .5rem;">
       @if (sessionType() != 0 ){
-        <button (click)="logout()">Cerrar Sesion</button>
+      <a routerLink="/library" routerLinkActive="active" ariaCurrentWhenActive="page" class="header-btn">
+        Biblioteca
+      </a>
+      @if (sessionType() > 1 ){
+      <a href="/admin" class="button">
+        <button>admin licensia</button>
+      </a>
+      <a href="/auditing" class="button">
+        <button>Auditoria</button>
+      </a>
+
+
       }
-      @else{<button (click)="login()">Iniciar Sesion</button>}
+
+      }
 
 
-
-    </div>
+      <div style="width: 100%;display: flex;justify-content: end;gap: .5rem;">
+        @if (sessionType() != 0 ){
+        <button (click)="logout()">Cerrar Sesion</button>
+        }
+        @else{<button (click)="login()">Iniciar Sesion</button>}
+      </div>
+    </nav>
   </div>
 </header>
 
