@@ -6,33 +6,34 @@ import { sessionType } from '../auth/session.guard';
 @Component({
   selector: 'store',
   templateUrl: './store.html',
+  styleUrl: './store.css',
 })
 export class Store {
-    public readonly gameList = signal<any[]>([])
-    private readonly api = inject(Api);
-    protected readonly code = signal<number | null>(null);
-    protected readonly sessionType = sessionType;
-  
+  public readonly gameList = signal<any[]>([])
+  private readonly api = inject(Api);
+  protected readonly code = signal<number | null>(null);
+  protected readonly sessionType = sessionType;
 
-    constructor(){    
-        this.api.games().subscribe({
-            next: (games) => {
-                if (games.length == undefined) games = []
-                this.gameList.set(games);
-                this.code.set(200);
-            },
-            error: (e: HttpErrorResponse) => {
-                this.code.set(e.status);
-            },
-        });
 
-    }
-    protected async comprar(juegoID:number){
-        console.log(juegoID)
-        this.api.buy(juegoID).subscribe(
-            {next:()=>{}}
-        )
-    }
+  constructor() {
+    this.api.games().subscribe({
+      next: (games) => {
+        if (games.length == undefined) games = []
+        this.gameList.set(games);
+        this.code.set(200);
+      },
+      error: (e: HttpErrorResponse) => {
+        this.code.set(e.status);
+      },
+    });
+
+  }
+  protected async comprar(juegoID: number) {
+    console.log(juegoID)
+    this.api.buy(juegoID).subscribe(
+      { next: () => { } }
+    )
+  }
 
 
 
