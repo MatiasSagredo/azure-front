@@ -10,11 +10,9 @@ COPY src/ ./src
 
 RUN npm run build
 
-FROM alpine:latest AS runner
+FROM nginx:alpine AS runner
 
-RUN apk add nginx
-
-WORKDIR /app
+COPY nginx.conf /etc/nginx/http.d/default.conf
 
 COPY --from=builder /data/dist/VidalStoreFront/browser /usr/share/nginx/html/
 
