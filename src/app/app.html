@@ -1,7 +1,8 @@
 <header>
   <div class="header-content">
-
-    <h1>VidalStore</h1>
+    <a class="brand" routerLink="/" aria-label="VidalStore, ir a la tienda">
+      <span class="brand-name">Vidal<span>Store</span></span>
+    </a>
     <nav class="main-nav">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
         ariaCurrentWhenActive="page" class="header-btn">
@@ -13,20 +14,18 @@
         Biblioteca
       </a>
       @if (sessionType() > 1 ){
-      <a href="/admin" class="button">
-        <button>admin licensia</button>
+      <a routerLink="/admin" routerLinkActive="active" ariaCurrentWhenActive="page" class="header-btn">
+        Admin licencias
       </a>
-      <a href="/auditing" class="button">
-        <button>Auditoria</button>
+      <a routerLink="/auditing" routerLinkActive="active" ariaCurrentWhenActive="page" class="header-btn">
+        Auditoría
       </a>
-
-
       }
 
       }
 
 
-      <div style="width: 100%;display: flex;justify-content: end;gap: .5rem;">
+      <div class="session-actions">
         @if (sessionType() != 0 ){
         <button (click)="logout()">Cerrar Sesion</button>
         }
@@ -38,8 +37,4 @@
 
 <main>
   <router-outlet />
-
 </main>
-
-<footer>
-</footer>

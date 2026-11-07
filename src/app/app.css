@@ -1,30 +1,50 @@
 header {
   background-color: var(--header-background-color);
-  padding: 0.5rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 2px 6px var(--shadow-color);
-  transition: background-color 0.5s ease;
-}
-
-header h1 {
-  color: var(--logo-color);
-  font-size: 1.5rem;
-  letter-spacing: 1px;
+  border-bottom: 1px solid var(--surface-border-color);
+  box-shadow: 0 3px 14px var(--shadow-color);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(10px);
 }
 
 .header-content {
+  box-sizing: border-box;
+  max-width: 1280px;
+  min-height: 60px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.75rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--logo-color);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-name {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.brand-name span {
+  color: var(--accent-color);
 }
 
 .main-nav {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.25rem;
+  min-width: 0;
 }
 
 .session-actions {
@@ -35,25 +55,27 @@ header h1 {
 }
 
 .session-actions button {
-  border: 1px solid #ffd166;
-  border-radius: 4px;
-  background-color: #ffd166;
+  border: 0;
+  border-radius: 0.6rem;
+  background-color: var(--accent-color);
   color: #171923;
-  padding: 0.45rem 0.85rem;
+  padding: 0.5rem 0.8rem;
   font: inherit;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  box-shadow: none;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .session-actions button:hover {
-  background-color: #fff1bd;
+  background-color: #e0b34e;
+  box-shadow: 0 3px 8px rgba(215, 168, 61, 0.2);
   transform: translateY(-1px);
 }
 
 .session-actions button:focus-visible {
-  outline: 2px solid #fff1bd;
+  outline: 3px solid color-mix(in srgb, var(--accent-color) 45%, transparent);
   outline-offset: 2px;
 }
 
@@ -67,19 +89,27 @@ header .header-btn {
   display: inline-block;
   line-height: 1.2;
   text-decoration: none;
-  transition: color 0.3s ease;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 header .header-btn::after {
   content: "";
   position: absolute;
   left: 0;
+  right: 0;
   bottom: 0;
-  width: 100%;
+  width: auto;
   height: 2px;
-  background: oklab(90.365% 0 -0.0001);
+  background: var(--accent-color);
   transform: scaleX(0);
   transition: transform 0.3s ease;
+}
+
+header .header-btn:hover,
+header .header-btn.active {
+  color: var(--accent-strong-color);
+  background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
 }
 
 header .header-btn:hover::after,
@@ -87,10 +117,25 @@ header .header-btn.active::after {
   transform: scaleX(1);
 }
 
-header .header-btn.active {
-  color: #ffd166;
+@media (max-width: 700px) {
+  header {
+    padding: 0;
+  }
 
-  &::after {
-    background: #ffd166;
+  .header-content {
+    padding: 0.75rem 1rem;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .session-actions {
+    margin-left: auto;
+    margin-top: -2.65rem;
   }
 }
