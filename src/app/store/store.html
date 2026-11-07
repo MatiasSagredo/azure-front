@@ -1,15 +1,21 @@
-<div style="padding-left: 1rem;padding-right: 2rem;">
-  <h2>Juegos</h2>
+<div class="store-page">
+  <div class="store-heading">
+    <div>
+      <h2>Juegos</h2>
+      <p class="store-description">Explora el catálogo.</p>
+    </div>
+  </div>
   <div class="game-grid">
     @for (item of gameList(); track $index) {
     <div class="game-card">
       <img width="350" height="250" [src]=item.background_image />
-      <h2 style="margin: 0;">{{item.name}}
+      <div class="game-overlay">
+        <h2>{{item.name}}</h2>
 
         @if (sessionType() != 0){
-        <button (click)="comprar(item.id)">Añadir a biblioteca</button>
+        <button class="add-button" (click)="comprar(item.id)">Añadir a biblioteca</button>
         }
-      </h2>
+      </div>
     </div>
     }
   </div>
