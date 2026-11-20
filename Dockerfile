@@ -17,13 +17,11 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /data/dist/VidalStoreFront/browser /usr/share/nginx/html/
 
-RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx \
-    && touch /var/run/nginx.pid \
-    && chown nginx:nginx /var/run/nginx.pid
+RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx
 
 USER nginx
 
 EXPOSE 8080
 
 ENTRYPOINT []
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off; pid /tmp/nginx.pid;"]
