@@ -13,8 +13,8 @@ import { App } from './app/app';
          oauth: {
            domain:          'us-east-1cymenwv1s.auth.us-east-1.amazoncognito.com',
            scopes:          ['openid', 'email'],
-           redirectSignIn:  ['http://localhost:4200/callback'],
-           redirectSignOut: ['http://localhost:4200'],
+           redirectSignIn:  ['http://localhost:4200/callback', 'https://vidalstore-gw-rg-vidalstore.brazilsouth.cloudapp.azure.com/callback'],
+           redirectSignOut: ['http://localhost:4200', 'https://vidalstore-gw-rg-vidalstore.brazilsouth.cloudapp.azure.com/'],
            responseType:    'code',
          },
        },
