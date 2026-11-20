@@ -7,6 +7,7 @@ COPY *.json .
 RUN npm ci --include=dev
 
 COPY src/ ./src
+COPY public/ ./public
 
 RUN npm run build && npm prune --omit=dev
 
