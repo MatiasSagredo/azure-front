@@ -4,11 +4,11 @@ WORKDIR /data
 
 COPY *.json .
 
-RUN npm install
+RUN npm ci --include=dev
 
 COPY src/ ./src
 
-RUN npm run build
+RUN npm run build && npm prune --omit=dev
 
 FROM nginx:alpine AS runner
 
