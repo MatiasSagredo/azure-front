@@ -1,23 +1,21 @@
-FROM node:24 AS builder
+FROM node:24-slim AS builder
 
 WORKDIR /data
 
 COPY *.json .
 
-RUN npm install
+RUN npm ci --include=dev
 
 COPY src/ ./src
+COPY public/ ./public
 
-RUN npm run build
+RUN npm run build && npm prune --omit=dev
 
-FROM nginx:alpine AS runner
+FROM caddy:2-alpine AS runner
 
-COPY nginx.conf /etc/nginx/http.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-
-COPY --from=builder /data/dist/VidalStoreFront/browser /usr/share/nginx/html/
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=builder /data/dist/VidalStoreFront/browser /srv/
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]
