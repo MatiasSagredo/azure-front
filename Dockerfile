@@ -25,4 +25,5 @@ USER nginx
 
 EXPOSE 8080
 
+ENTRYPOINT []
 CMD ["nginx", "-g", "daemon off;"]
