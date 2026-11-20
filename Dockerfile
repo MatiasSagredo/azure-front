@@ -11,17 +11,11 @@ COPY public/ ./public
 
 RUN npm run build && npm prune --omit=dev
 
-FROM nginx:alpine AS runner
+FROM caddy:2-alpine AS runner
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=builder /data/dist/VidalStoreFront/browser /srv/
 
-COPY --from=builder /data/dist/VidalStoreFront/browser /usr/share/nginx/html/
+EXPOSE 80
 
-RUN chown -R nginx:nginx /usr/share/nginx/html /var/cache/nginx
-
-USER nginx
-
-EXPOSE 8080
-
-ENTRYPOINT []
-CMD ["nginx", "-g", "daemon off; pid /tmp/nginx.pid;"]
+CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "--adapter", "caddyfile"]

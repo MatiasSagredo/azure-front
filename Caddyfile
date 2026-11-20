@@ -1,0 +1,10 @@
+{$DOMINIO:localhost} {
+	root * /srv
+	encode zstd gzip
+	try_files {path} /index.html
+	file_server
+
+	handle /v1/* {
+		reverse_proxy 127.0.0.1:8080
+	}
+}
